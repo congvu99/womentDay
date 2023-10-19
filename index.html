@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+<style>
+*{
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+}
+body {
+  background: skyblue;
+}
+
+.sun {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 150px;
+  height:150px;
+  background: yellow;
+  border-radius: 50%;
+  animation: sunMove 15s linear infinite;
+}
+
+.cloud {
+  position: absolute;
+  top: 100px;
+  left: -100px;
+  width: 40%;
+  height: 25%;
+  background: url('https://media.giphy.com/media/GEobDL6PTMcAZOMNBo/giphy.gif');
+  animation: cloudMove 10s linear infinite;
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background: green;
+}
+
+.flower {
+    
+    position: absolute;
+    bottom: 9%;
+    left: calc(50% - (100px /2)); 
+    width: 10%; 
+    height: 15%; 
+    background:url('https://media.giphy.com/media/U4qQKbaM2evCBkfyX0/giphy.gif');
+    background-size: cover; 
+}
+.flower-2{
+    position: absolute;
+    bottom: 7%;
+    left: calc(50% - (100px /2)); 
+    width: 19%; 
+    height: 15%; 
+    background:url('https://media.giphy.com/media/X5PsaxTP6U3h9dUSxd/giphy.gif');
+    background-size: cover; 
+}
+
+.person {
+    position: absolute;
+    z-index: 100;
+    bottom: 9%;
+    left: -20%;
+    width: 25%;
+    height: 17%;
+    background: url('tieudau.png') center center/1000px 1000px;
+    animation: personMove 7s linear 1 forwards, shake .6s ease-in-out infinite; /* Dừng lại sau khi đạt 50% */
+    animation-fill-mode: forwards; /* Giữ vị trí sau khi hoàn thành animation */
+    animation-timing-function: ease-in-out;
+}
+
+
+.rainbow {
+    position:absolute; 
+    bottom: 16%;
+    left :20%; 
+    width :20%; 
+    height :20%; 
+    background :url('https://media.giphy.com/media/MCutGG3SC9uH5lZivi/giphy.gif'); 
+    background-size: cover; 
+    visibility:hidden; /* Cầu vồng sẽ được giấu đi cho đến khi người đến giữa */
+}
+
+.house {
+    position: absolute;
+    bottom: 3%;
+    right: 0; /* Nằm ở bên phải màn hình */
+}
+.envelope {
+  /* ... other styles ... */
+  display: none;
+}
+
+
+.envelope {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the envelope */
+  width: 50%;
+  height: 30%;
+  background: pink;
+  border: 5px solid white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    font-family: 'Tilt Neon', sans-serif;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+@keyframes sunMove {
+    from {left: -50px;}
+    to {left: calc(100vw - 150px);}
+}
+
+@keyframes cloudMove {
+    from {left: 10vw;}
+    to {left: calc(60vw   );}
+}
+
+@keyframes personMove {
+    0% {
+        left: -20%;
+    }
+    50% {
+        left: 25%;
+    }
+    100% {
+        left: 25%;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="sun"></div>
+<div class="cloud"></div>
+<div class="grass"></div>
+<div class="flower" style="left: calc(50% - (100px /2));"></div> <!-- Add this line -->
+<div class="flower-2" style="left: calc(30% - (100px /2));"></div> <!-- Add this line -->
+<div class="flower-2" style="left: calc(15% - (100px /2));"></div> <!-- Add this line -->
+<div class="person"></div> <!-- Thêm người vào đây -->
+<div class="rainbow"></div> <!-- Thêm cầu vồng vào đây -->
+<img class="house" src="https://media.giphy.com/media/QsnO63xQGssgEVFWIM/giphy.gif" alt="Căn nhà ở góc trên bên phải">
+<div class="envelope">
+    <div class="letter">
+      <p class="message">Gửi hạt đậu nhỏ chúc mừng ngày 20/10 , <br>
+        gửi tới em iu của anh một cô nàng mang linh hồn của cung bọ cạp thông minh bướng bỉnh, 
+       mạnh mẽ tràn đầy nhiệt huyết , mong rằng hôm nay và những ngày sau đều sẽ luôn luôn vui vẻ hạnh phúc, đạt được mục tiêu của mình, 
+        anh sẽ luôn bên em , yêu em , ủng hộ em , yêu em nhiều lắm hạt đậu của ah ạ.
+     </p>
+    </div>
+  </div>
+
+<script>
+    window.onload = function() {
+       var person = document.querySelector('.person');
+       person.addEventListener('animationend', function() {
+          var rainbow = document.querySelector('.rainbow');
+          rainbow.style.visibility = 'visible';
+          var envelope = document.querySelector('.envelope');
+            envelope.style.display = 'block';
+       });
+    };
+
+    </script>
+</body>
+</html>
